@@ -4,12 +4,12 @@ using Flux: throttle, logitcrossentropy, onecold, onehotbatch
 using Zygote: @nograd
 using StatsBase: mean
 using CUDA
-include(".../CIFAR10.jl")
+include("../CIFAR10.jl")
 @nograd onehotbatch
 @nograd softmax
 
 @testset "DARTS training test" begin
-    sing DifferentiableNAS
+    using DifferentiableNAS
     using Flux
     using Flux: throttle, logitcrossentropy, onecold, onehotbatch, Optimiser
     using Zygote: @nograd
