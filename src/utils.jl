@@ -285,8 +285,6 @@ using CUDA.CUDNN:
     convdims,
     math_mode,
     handle,
-    nnlibPadding,
-	CUDNNFloat,
 	scalingParameter,
 	cudnnTensorDescriptor,
 	cudnnFilterDescriptor,
@@ -295,6 +293,15 @@ using CUDA.CUDNN:
 	cudnnConvolutionBackwardData,
 	cudnnConvolutionBackwardFilter
 
+
+function nnlibPadding(dims)
+    pd = NNlib.padding(dims)
+    if !all(pd[1:2:end] .== pd[2:2:end])
+        @warn "cuDNN does not support asymmetric padding; defaulting to symmetric choice" maxlog=1
+    end
+    return pd[1:2:end]
+end
+const CUDNNFloat = Union{Float16,Float32,Float64}
 
 function cudnnDepthwiseConvolutionDescriptor(cdims::DepthwiseConvDims, x::DenseCuArray{T}) where T
     cudnnConvolutionDescriptor(convdims(nnlibPadding(cdims),size(x)), convdims(NNlib.stride(cdims),size(x)), convdims(NNlib.dilation(cdims),size(x)), CUDNN_CONVOLUTION, cudnnDataType(T), CUDNN_TENSOR_OP_MATH, CUDNN_DEFAULT_REORDER, Cint(size(x,3)))

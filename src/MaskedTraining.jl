@@ -2,7 +2,6 @@ export Maskedtrain1st!, Standardtrain1st!
 
 using Flux
 using Flux: onehotbatch
-using Juno
 using Base.Iterators
 using StatsBase: mean
 using Zygote

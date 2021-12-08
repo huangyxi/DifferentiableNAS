@@ -2,7 +2,6 @@ export Activationtrain1st!, activationupdate, collectweights, activationpre
 
 using Flux
 using Flux: onehotbatch
-using Juno
 using Base.Iterators
 using StatsBase
 using Zygote

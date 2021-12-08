@@ -1,7 +1,6 @@
 module DifferentiableNAS
 
 using Flux
-using Juno
 using Base.Iterators
 using StatsBase: mean
 using Zygote

@@ -2,7 +2,6 @@ export ADMMtrain1st!, euclidmap, regterm, ADMMaux
 
 using Flux
 using Flux: onehotbatch
-using Juno
 using Base.Iterators
 using StatsBase: mean
 using Zygote

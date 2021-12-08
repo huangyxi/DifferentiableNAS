@@ -17,7 +17,7 @@ using Zygote
 using LinearAlgebra
 using CUDA
 using Zygote: @adjoint, dropgrad
-using Distributions
+# using Distributions
 
 ReLUConvBN(channels_in, channels_out, kernel_size, stride, pad) =
     Chain(

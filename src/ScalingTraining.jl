@@ -2,7 +2,6 @@ export Scalingtrain1st!
 
 using Flux
 using Flux: onehotbatch
-using Juno
 using Base.Iterators
 using StatsBase
 using Zygote
